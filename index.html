@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="script.js"></script>
+    <style>
+      /* .formLabel1{
+        color: red;
+      }
+      .formLabel2{
+      color: green;
+      background-color: grey;
+      } */
+      #div{
+      width: 350px;
+      height: 350px;
+      border-radius: 15px black;
+      background-color: wheat;
+        }
+    </style>
+</head>
+<body>
+  <!-- <input  type="button" value="open Window" onclick="openWindow()" ></input>    
+  <input  type="button" value="close Window" onclick="closeWindow()" ></input>    
+  <input  type="button" value="Change Background" onclick="changeBg()" ></input>    
+  <input  type="button" value="Move Window" onclick="moveByWindow()" ></input>    
+  <input  type="button" value="Move Fixed Window" onclick="moveToWindow()" ></input>     -->
+  <!-- <input  type="button" value="start" onclick="startAlert()" ></input>    
+  <input  type="button" value="stop" onclick="stopAlert()" ></input>     -->
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" id= "label1" class="formLabel1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="formLabel">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <!-- <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+<input type="button" value="Save Info" onclick="saveInfo()"> 
+<input type="button" value="get Info" onclick="getInfo()"> 
+<div class="div1"></div>
+ </form>
+
+ <!-- <div id="div"></div> -->
+ <!-- <input type="button" value="Add Element"  onclick="AddNewElement()"> -->
+<!-- <button type="submit" id="btnSub" class="btn btn-primary" name="Add element" value="Add Element">Add Element</button> -->
+
+
+
+
+
+<script>
+// function changeColor(){
+//   var elem = document.querySelectorAll('.form-control')
+//   elem.forEach(el=> el.style.backgroundColor = "red")
+// console.log(elem)
+// }
+// function modifyContent(){
+// document.querySelector('.formLabel1').innerText = "Your Email"
+// }
+// // console.log(getComputedStyle(document.getElementById('label1')).color);
+
+// function modifyClassList(){
+//   document.getElementById('label1').classList.remove('formLabel1')
+//   document.getElementById('label1').classList.add('formLabel2')
+//   console.log(getComputedStyle(document.getElementById('label1')).backgroundColor);
+// }
+
+// function AddNewElement(){
+// var parent = document.querySelector('div')
+// var newEl =  document.createTextNode('This Is First Element');
+//  parent.appendChild(newEl)
+//  //document.body.insertBefore(newEl ,parent );
+// }
+
+
+// var i=10;
+// var maxCount = 0;
+// var parent= document.querySelector('#div') 
+// document.querySelector('#btnSub').addEventListener('click' , function(){
+//  if(i>maxCount){
+//   var newElement=  document.createElement("div")
+//   var newTxt =document.createTextNode('This is new Element')
+//   var newHtml = newElement.appendChild(newTxt)
+//   parent.appendChild(newHtml)
+//   maxCount++
+// }else{
+//   alert('You Exceed max count')
+//   parent.innerHTML= ""
+//   maxCount=0
+// }
+// })
+
+function saveInfo(){
+  var date =new Date();
+  date.setMonth(date.getMonth()+2)
+  var emailVal = document.querySelector('#exampleInputEmail1').value;
+  var passVal = document.querySelector('#exampleInputPassword1').value;
+   document.cookie = "email = "+emailVal + ";expiry Date"+ date
+   document.cookie = "password = " +passVal+"; expiry Date"+ date
+}
+// var emailIndex;
+// var divTag =document.querySelector('.div1');
+// function getInfo(){
+// var cookieVal = document.cookie
+// emailIndex = cookieVal.indexOf("email")
+// emailIndex = cookieVal.indexOf(';' , 0)
+// var emailSt = cookieVal.substring(0 , emailIndex)
+// var emailValue =  emailSt.split('=')[1]
+// console.log(emailValue);
+// passIndex = cookieVal.indexOf("password")
+// var passSt = cookieVal.substring(15,cookieVal.length)
+// var passValue = passSt.split('=')[1]
+// console.log(passValue);
+// var newDiv= document.createElement('div')
+// var newEle = document.createTextNode('Your email '+emailValue )
+// newDiv.appendChild(newEle)
+// divTag.appendChild(newDiv)
+// }
+
+function getInfo(){
+  var assotiativeCookie = [];
+  var splitCookie = document.cookie.split(';')
+  console.log(splitCookie);
+  for(i=0 ; i<splitCookie.length ; i++){
+    assotiativeCookie[splitCookie[i].split('=')[0].trim()]=  assotiativeCookie[splitCookie[i].split('=')[1].trim()]
+  }
+
+  console.log(assotiativeCookie);
+}
+  </script>
+</body>
+</html>
